@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Online_Appointment.Models.Department>
+
+@{
+    ViewBag.Title = "DepartmentsList";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>DepartmentsList</h2>
+
+<p>
+    <button type="button" class="btn btn-primary">@Html.ActionLink("Add Department", "AddDepartment", null, new { style = "color: white" })</button>
+</p>
+@if (TempData["AlertMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" id="alert" role="alert">
+        <strong>Success !</strong> @TempData["AlertMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+        </button>
+    </div>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImageURL)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.ImageURL)*@
+                <img src="@Url.Content(item.ImageURL)" width="50" height="50" class="img-rounded" />
+
+            </td>
+            <td>
+                <button type="button" class="btn btn-outline-warning">@Html.ActionLink("Edit", "EditDepartment", "Admin", new { id = item.DepId }, new { style = "color: black;" })</button>
+                <button type="button" class="btn btn-outline-info">@Html.ActionLink("Details", "DepartmentDetails", new { id = item.DepId }, new { style = "color: black;" })</button>
+                <button type="button" class="btn btn-outline-danger">@Html.ActionLink("Delete", "DeleteDepartment", new { id = item.DepId }, new { style = "color: black;" })</button>
+            </td>
+        </tr>
+    }
+
+</table>
+<script src="~/Scripts/alertMessageJavaScript.js"></script>
+@Scripts.Render("~/bundles/bootstrap")
+@Scripts.Render("~/bundles/jQuery")

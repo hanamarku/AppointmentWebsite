@@ -1,0 +1,54 @@
+﻿@model Online_Appointment.Models.Department
+
+@{
+    ViewBag.Title = "DepartmentsList";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<h2>Department Details</h2>
+
+<div class="card mb-3">
+    <img src="@Url.Content(Model.ImageURL)" width="30%" height="3%" class="img-rounded" />
+    <div class="card-body">
+        <h5 class="card-title">@Html.DisplayNameFor(model => model.Name) : @Html.DisplayFor(model => model.Name)</h5>
+        <p class="card-text">@Html.DisplayNameFor(model => model.Description) : @Html.DisplayFor(model => model.Description)</p>
+    </div>
+</div>
+@*<div>
+        <h4>Department</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ImageURL)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ImageURL)
+            </dd>
+
+        </dl>
+    </div>*@
+
+<div>
+    @Html.ActionLink("Back to List", "DepartmentsList")
+</div>
+
+@Scripts.Render("~/bundles/bootstrap")
+@Scripts.Render("~/bundles/jQuery")
