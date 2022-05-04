@@ -13,11 +13,11 @@ namespace Online_Appointment.Areas.Admin.Controllers
     public class AdminController : Controller
     {
         // GET: Admin/Admin
-        public Online_Appointment.Models.HmsDbContext DbContext { get; set; }
-        public AdminController()
-        {
-            DbContext = new Models.HmsDbContext();
-        }
+        public ApplicationDbContext DbContext = new ApplicationDbContext();
+        //public AdminController()
+        //{
+        //    DbContext = new Models.HmsDbContext();
+        //}
 
         public ActionResult Index()
         {
@@ -209,7 +209,7 @@ namespace Online_Appointment.Areas.Admin.Controllers
 
         public ActionResult DepartmentsList()
         {
-            using (var context = new HmsDbContext())
+            using (var context = new ApplicationDbContext())
             {
                 var dep = context.Departments;
                 List<Department> Deps = new List<Department>();
@@ -223,7 +223,7 @@ namespace Online_Appointment.Areas.Admin.Controllers
 
         public ActionResult DepartmentDetails(int? id)
         {
-            using (var context = new HmsDbContext())
+            using (var context = new ApplicationDbContext())
             {
                 return View(context.Departments.Where(x => x.DepId == id).FirstOrDefault());
             }
@@ -257,6 +257,25 @@ namespace Online_Appointment.Areas.Admin.Controllers
             return Json(!DbContext.Departments.Any(x => x.Name == Name), JsonRequestBehavior.AllowGet);
         }
 
+
+        public ActionResult PatientList()
+        {
+            var roleId = DbContext.Roles.Where(m => m.Name == "Patient").Select(m => m.Id).SingleOrDefault(); ;
+            var users = DbContext.Users.Where(m => m.Roles.Any(r => r.RoleId == roleId)).ToList();
+            return View(users);
+        }
+
+        public JsonResult DeletePatient(string PatientId)
+        {
+            bool flag = false;
+            var users = DbContext.Users.Where(x => x.Id == PatientId).SingleOrDefault();
+            if (users != null)
+            {
+                DbContext.SaveChanges();
+                flag = true;
+            }
+            return Json(flag, JsonRequestBehavior.AllowGet);
+        }
 
         //[HttpGet]
 

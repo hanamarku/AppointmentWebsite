@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Online_Appointment.ValidationHelpers;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Online_Appointment.Models
@@ -48,10 +50,16 @@ namespace Online_Appointment.Models
 
     public class LoginViewModel
     {
+        //[Required]
+        //[Display(Name = "Email")]
+        //[EmailAddress]
+        //public string Email { get; set; }
+
         [Required]
-        [Display(Name = "Email")]
-        [EmailAddress]
-        public string Email { get; set; }
+        [Display(Name = "Username")]
+        //[EmailAddress]
+        public string UserName { get; set; }
+
 
         [Required]
         [DataType(DataType.Password)]
@@ -64,10 +72,33 @@ namespace Online_Appointment.Models
 
     public class RegisterViewModel
     {
+        [Required(ErrorMessage = "First Name is required !")]
+        [RegularExpression(@"^[a-zA-Z''-'\s]{1,40}$", ErrorMessage = "Invalid First Name")]
+        [Display(Name = "Firstname")]
+        public string Firstname { get; set; }
+        [Required(ErrorMessage = "Last Name is required !")]
+        [RegularExpression(@"^[a-zA-Z''-'\s]{1,40}$", ErrorMessage = "Invalid Last Name")]
+        [Display(Name = "Lastname")]
+        public string Lastname { get; set; }
+
+        [Required(ErrorMessage = "Username is required !")]
+        public string UserName { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
+
+        [Required(ErrorMessage = "Birthday is required !")]
+        [DataType(DataType.Date)]
+        [BirthdayValidation]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime Birthday { get; set; }
+
+        [DataType(DataType.PhoneNumber)]
+        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Not a valid phone number")]
+        [Required(ErrorMessage = "Phone number is required !")]
+        public string PhoneNumber { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]

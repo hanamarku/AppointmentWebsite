@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using static Online_Appointment.Models.Users;
+
 
 namespace Online_Appointment.Models
 {
@@ -10,11 +10,15 @@ namespace Online_Appointment.Models
     {
         [Key]
         public int Id { get; set; }
-        [Required]
+        //[Required]
 
-        public int UserId { get; set; }
-        [ForeignKey("Id")]
-        public virtual User User { get; set; }
+        //public int UserId { get; set; }
+        //[ForeignKey("Id")]
+        //public virtual User User { get; set; }
+
+        public string UserId { get; set; }
+        [ForeignKey("UserId")]
+        public ApplicationUser User { get; set; }
 
 
         [DisplayName("Appointment Date")]

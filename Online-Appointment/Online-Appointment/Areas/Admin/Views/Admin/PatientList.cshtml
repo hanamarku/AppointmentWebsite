@@ -1,0 +1,138 @@
+﻿@model IEnumerable<Online_Appointment.Models.ApplicationUser>
+
+@{
+    ViewBag.Title = "PatientList";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>PatientList</h2>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+<table class="container">
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.PhoneNumber)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.UserName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Firstname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Lastname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Birthday)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CreatedOn)
+                </th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PhoneNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Firstname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Lastname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Birthday)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreatedOn)
+                    </td>
+                    <td>
+                        <a class="btn btn-danger" href="#" onclick="deleting()">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+    <script>
+        var deleting = function () {
+            alert("Alert");
+        }
+    </script>
+  
+
+
+    <div class="modal fade" id="#myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a href="#" class="close" data-dismiss="modal">&times;</a>
+                    <h3 class="modal-title">Delete Patient</h3>
+                </div>
+                <div class="modal-body">
+                    <h4>Are you sure ?</h4>
+                </div>
+                <div class="modal-footer">
+                    <a href="#" class="btn btn-warning" data-dismiss="modal">Cancel</a>
+                    <a href="#" class="btn btn-success" onclick="DeletePatient()">Confirm</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <input type="hidden" id="patientId" />
+
+    </div>
+
+    <script>
+        var ConfirmDelete = function (PatientId) {
+            $("#patientId").val(PatientId);
+            $("myModal").modal('show');
+        }
+
+        var DeletePatient = function () {
+            var patient = $("#patientId").val();
+            $.ajax({
+                type: "POST",
+                url: "/Admin/DeletePatient",
+                data: { PatientId: patient },
+                success: function (result) {
+                    $("#myModal").modal("hide");
+                    $("#row_" + patient).remove();
+
+                }
+            })
+        }
+    </script>
+
+    @*@Scripts.Render("~/bundles/bootstrap")
+        @Scripts.Render("~/bundles/jQuery")*@
+
+

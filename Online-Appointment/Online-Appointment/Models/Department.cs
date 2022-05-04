@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Web;
 using System.Web.Mvc;
-using static Online_Appointment.Models.Users;
+
 
 namespace Online_Appointment.Models
 {

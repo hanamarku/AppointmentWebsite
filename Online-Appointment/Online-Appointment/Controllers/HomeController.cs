@@ -1,14 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Online_Appointment.Models;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Online_Appointment.Controllers
 {
     public class HomeController : Controller
     {
+        public ApplicationDbContext context = new ApplicationDbContext();
         public ActionResult Index()
+        {
+            ViewBag.departments = context.Departments.ToList();
+            return View();
+        }
+        public ActionResult HomeIndex()
         {
             return View();
         }
