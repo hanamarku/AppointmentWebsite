@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace Online_Appointment.Models
@@ -20,6 +19,6 @@ namespace Online_Appointment.Models
         [Required(ErrorMessage = "Plotesoni kohen !")]
         [DisplayName("Time to take medicine")]
         public string TimeToTakeMedicine { get; set; }
-        public virtual List<Prescription> PrescriptionList { get; set; }
+        //public virtual List<Prescription> PrescriptionList { get; set; }
     }
 }

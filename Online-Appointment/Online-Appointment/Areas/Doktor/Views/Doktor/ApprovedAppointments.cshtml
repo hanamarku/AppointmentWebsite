@@ -1,0 +1,126 @@
+﻿@model IEnumerable<Online_Appointment.Models.Appointment>
+
+@{
+    ViewBag.Title = "ApprovedAppointments";
+    Layout = "~/Areas/Doktor/Views/Shared/_DoktorLayout.cshtml";
+}
+
+<h2>Approved Appointments</h2>
+
+
+
+@Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render("~/bundles/bootstrap")
+@Scripts.Render("~/bundles/jQuery")
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $("#table_id").dataTable();
+        });
+    </script>
+}
+
+@if (TempData["AlertMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" id="alert" role="alert">
+        <strong>Success !</strong> @TempData["AlertMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+        </button>
+    </div>
+}
+
+@* <p> *@
+@*     @Html.ActionLink("Create New", "Create") *@
+@* </p> *@
+<table id="table_id" class="table">
+    <tr>
+        <th>
+            Doctor
+        </th>
+        <th>
+            Patient
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AppointmentDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Time)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Doctor.ApplicationUser.Firstname) @Html.DisplayFor(modelItem => item.Doctor.ApplicationUser.Lastname)
+
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.User.Firstname) @Html.DisplayFor(modelItem => item.User.Lastname)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.AppointmentDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Time)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Description)
+    </td>
+    @if (item.Status)
+    {
+        <td>
+            @("Active Appointment !")
+        </td>
+
+    }
+    else
+    {
+        <td>
+            @("Appointment not approved !")
+        </td>
+
+    }
+
+    <td>
+        <button type="button" class="btn btn-warning">@Html.ActionLink("Decline", "DeclineAppointment", new { id = item.Id }, new { style = "color: black;" })</button>
+    </td>
+
+    <td>
+        <button type="button" class="btn btn-warning">@Html.ActionLink("Add Prescription", "AddPrescription", new { id = item.Id }, new { style = "color: black;" })</button>
+    </td>
+    <td>
+        <button type="button" class="btn btn-warning">@Html.ActionLink("Generate PDF", "PresriptionList", new { id = item.Id }, new { style = "color: black;" })</button>
+    </td>
+
+</tr>
+    }
+
+</table>
+
+<script src="~/Scripts/MessageFade.js"></script>
+@Scripts.Render("~/bundles/bootstrap")
+@Scripts.Render("~/bundles/jQuery")
+
+<script>
+    var SendEmail = function () {
+        $.ajax({
+            type: "Post",
+            url: "/Doktor/SendEmail"
+        })
+    }
+</script>
+
+@Styles.Render("~/Content/dataTables")
+@Scripts.Render("~/bundles/dataTables")
+
+

@@ -2,6 +2,7 @@
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Online_Appointment.Models;
+using Online_Appointment.Services;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -14,19 +15,27 @@ namespace Online_Appointment.Controllers
     [Authorize]
     public class AccountController : Controller
     {
+        //private LoggerService logger;
+        //private static ILogger logger = LogManager.GetLogger("OnlineAppointment");
         ApplicationDbContext DbContext;
+
+        private ILogger _logger;
+
         public AccountController()
         {
+
             DbContext = new ApplicationDbContext();
         }
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, ILogger logger)
         {
             UserManager = userManager;
             SignInManager = signInManager;
+            _logger = logger;
+            //logger = new LoggerService();
         }
 
         public ApplicationSignInManager SignInManager
@@ -76,18 +85,43 @@ namespace Online_Appointment.Controllers
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, shouldLockout: false);
+            //*Ne rast se perdoruesi ka vendosur email atehere mund te besh si ne vijim, sepse PasswordSignInAsync pranon vetem login sipas username*//
+            SignInStatus result = SignInStatus.Failure;
+            var userByEmail = await UserManager.FindByEmailAsync(model.Email);
+            if (model.UserGaveEmail)
+            {
+
+                if (userByEmail != null)
+                    result = await SignInManager.PasswordSignInAsync(userByEmail.UserName, model.Password, model.RememberMe, shouldLockout: false);
+            }
+            else
+            {
+                result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            }
+            // var userByEmail = await UserManager.FindByEmailAsync(model.Email);
             switch (result)
             {
                 case SignInStatus.Success:
+
+                    Session["id"] = userByEmail.Id;
+                    Session["username"] = userByEmail.UserName;
+
+
+                    //LoggerService.GetInstance().Info("test2");
+                    //_logger.Info("User me id", "kk", "u logua me Ip ", "iii");
                     var userId = SignInManager.AuthenticationManager.AuthenticationResponseGrant.Identity.GetUserId();
                     if (UserManager.IsInRole(userId, "Admin"))
                     {
+
+
+
+                        LoggerService.GetInstance().Info("Useri me id" + userId + " u logua si admin" + " nga IP " + Request.UserHostAddress);
+                        //LoggerService.GetInstance().Info("Useri me id");
                         return RedirectToAction("Index", "Admin", new { area = "Admin" });
                     }
                     else if (UserManager.IsInRole(userId, "Doctor"))
                     {
-                        return RedirectToAction("Index", "Doctor", new { area = "Doctor" });
+                        return RedirectToAction("Index", "Doktor", new { area = "Doktor" });
                     }
                     else if (UserManager.IsInRole(userId, "Patient"))
                     {
@@ -217,7 +251,7 @@ namespace Online_Appointment.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = await UserManager.FindByNameAsync(model.Email);
+                var user = await UserManager.FindByEmailAsync(model.Email);
                 if (user == null || !(await UserManager.IsEmailConfirmedAsync(user.Id)))
                 {
                     // Don't reveal that the user does not exist or is not confirmed
@@ -226,10 +260,10 @@ namespace Online_Appointment.Controllers
 
                 // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                 // Send an email with this link
-                // string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
-                // var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);		
-                // await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
-                // return RedirectToAction("ForgotPasswordConfirmation", "Account");
+                string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
+                var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                return RedirectToAction("ForgotPasswordConfirmation", "Account");
             }
 
             // If we got this far, something failed, redisplay form

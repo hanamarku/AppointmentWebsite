@@ -17,101 +17,85 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
 
-<table class="container">
-    <table class="table table-responsive">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Email)
-                </th>
-
-                <th>
-                    @Html.DisplayNameFor(model => model.PhoneNumber)
-                </th>
-
-                <th>
-                    @Html.DisplayNameFor(model => model.UserName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Firstname)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Lastname)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Birthday)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.CreatedOn)
-                </th>
-            </tr>
-        </thead>
-
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Email)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.PhoneNumber)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.UserName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Firstname)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Lastname)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Birthday)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CreatedOn)
-                    </td>
-                    <td>
-                        <a class="btn btn-danger" href="#" onclick="deleting()">Delete</a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-
-
-    <script>
-        var deleting = function () {
-            alert("Alert");
-        }
-    </script>
-  
-
-
-    <div class="modal fade" id="#myModal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <a href="#" class="close" data-dismiss="modal">&times;</a>
-                    <h3 class="modal-title">Delete Patient</h3>
-                </div>
-                <div class="modal-body">
-                    <h4>Are you sure ?</h4>
-                </div>
-                <div class="modal-footer">
-                    <a href="#" class="btn btn-warning" data-dismiss="modal">Cancel</a>
-                    <a href="#" class="btn btn-success" onclick="DeletePatient()">Confirm</a>
-                </div>
+<table class="container"/>
+<table class="table table-responsive">
+    <thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Firstname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Lastname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Birthday)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedOn)
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Firstname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lastname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Birthday)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedOn)
+            </td>
+            <td>
+                <a class="btn btn-danger" href="#" onclick="ConfirmDelete(@item.Id)">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+<div class="modal fade" id="#myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a href="#" class="close" data-dismiss="modal">&times;</a>
+                <h3 class="modal-title">Delete Patient</h3>
+            </div>
+            <div class="modal-body">
+                <h4>Are you sure ?</h4>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn btn-warning" data-dismiss="modal">Cancel</a>
+                <a href="#" class="btn btn-success" onclick="DeletePatient()">Confirm</a>
             </div>
         </div>
     </div>
+</div>
+<input type="hidden" id="patientId" />
 
-    <input type="hidden" id="patientId" />
-
-    </div>
-
-    <script>
+<script>
         var ConfirmDelete = function (PatientId) {
             $("#patientId").val(PatientId);
             $("myModal").modal('show');

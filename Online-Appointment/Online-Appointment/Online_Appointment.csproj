@@ -46,16 +46,54 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Grpc.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=d754f35622e28bad, processorArchitecture=MSIL">
+      <HintPath>..\packages\Grpc.Core.2.45.0\lib\net45\Grpc.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Grpc.Core.Api, Version=2.0.0.0, Culture=neutral, PublicKeyToken=d754f35622e28bad, processorArchitecture=MSIL">
+      <HintPath>..\packages\Grpc.Core.Api.2.45.0\lib\net45\Grpc.Core.Api.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Exchange.WebServices, Version=15.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Exchange.WebServices.2.2\lib\40\Microsoft.Exchange.WebServices.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Exchange.WebServices.Auth, Version=15.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Exchange.WebServices.2.2\lib\40\Microsoft.Exchange.WebServices.Auth.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Owin, Version=4.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.4.2.1\lib\net45\Microsoft.Owin.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=4.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.2.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
     </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.7.15\lib\net45\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="Rotativa, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rotativa.1.7.3\lib\net461\Rotativa.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.4.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.3\lib\netstandard2.0\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.4.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.2\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -108,6 +146,18 @@
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Abstractions, Version=5.11.7.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.11.10\lib\net47\Unity.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Container, Version=5.11.1.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.Container.5.11.1\lib\net47\Unity.Container.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Mvc, Version=5.11.1.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.Mvc.5.11.1\lib\net47\Unity.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.2.0\lib\net40\WebActivatorEx.dll</HintPath>
     </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
@@ -168,21 +218,23 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\UnityConfig.cs" />
+    <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
-    <Compile Include="Areas\Admin\Controllers\User_Doctor_Controller.cs" />
+    <Compile Include="Areas\Admin\Controllers\User_DoctorController.cs" />
     <Compile Include="Areas\Admin\Images_dep.cs" />
-    <Compile Include="Areas\Doctor\DoctorAreaRegistration.cs" />
+    <Compile Include="Areas\Doktor\Controllers\DoktorController.cs" />
+    <Compile Include="Areas\Doktor\DoktorAreaRegistration.cs" />
     <Compile Include="Areas\Patient\Controllers\PatientController.cs" />
     <Compile Include="Areas\Patient\PatientAreaRegistration.cs" />
+    <Compile Include="CollectionOfModels\AppointmentCollection.cs" />
     <Compile Include="CollectionOfModels\DashboardCollection.cs" />
     <Compile Include="CollectionOfModels\DoctorCollection.cs" />
     <Compile Include="CollectionOfModels\IndexCollection.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\HomePageController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -194,6 +246,54 @@
     <Compile Include="Migrations\202205031312411__pswup.designer.cs">
       <DependentUpon>202205031312411__pswup.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202205041834056_user_photo.cs" />
+    <Compile Include="Migrations\202205041834056_user_photo.designer.cs">
+      <DependentUpon>202205041834056_user_photo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205051211565_ap.cs" />
+    <Compile Include="Migrations\202205051211565_ap.designer.cs">
+      <DependentUpon>202205051211565_ap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205051337503_appName.cs" />
+    <Compile Include="Migrations\202205051337503_appName.designer.cs">
+      <DependentUpon>202205051337503_appName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205051811556_update.cs" />
+    <Compile Include="Migrations\202205051811556_update.designer.cs">
+      <DependentUpon>202205051811556_update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205052042141_stringId.cs" />
+    <Compile Include="Migrations\202205052042141_stringId.designer.cs">
+      <DependentUpon>202205052042141_stringId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205052211208_apps.cs" />
+    <Compile Include="Migrations\202205052211208_apps.designer.cs">
+      <DependentUpon>202205052211208_apps.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205052244100_miayg.cs" />
+    <Compile Include="Migrations\202205052244100_miayg.designer.cs">
+      <DependentUpon>202205052244100_miayg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205081109599_mig.cs" />
+    <Compile Include="Migrations\202205081109599_mig.designer.cs">
+      <DependentUpon>202205081109599_mig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205081618084_prescription.cs" />
+    <Compile Include="Migrations\202205081618084_prescription.designer.cs">
+      <DependentUpon>202205081618084_prescription.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205081754203_medicine].cs" />
+    <Compile Include="Migrations\202205081754203_medicine].designer.cs">
+      <DependentUpon>202205081754203_medicine].cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205081800081_med2.cs" />
+    <Compile Include="Migrations\202205081800081_med2.designer.cs">
+      <DependentUpon>202205081800081_med2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205091640106_migrationl.cs" />
+    <Compile Include="Migrations\202205091640106_migrationl.designer.cs">
+      <DependentUpon>202205091640106_migrationl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Appointment.cs" />
@@ -204,10 +304,15 @@
     <Compile Include="Models\Medicine.cs" />
     <Compile Include="Models\Prescription.cs" />
     <Compile Include="Models\Requests\DoctorRegisterRequest.cs" />
+    <Compile Include="Models\test.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ILogger.cs" />
+    <Compile Include="Services\LoggerService.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ValidationHelpers\AppointmentDateValidation.cs" />
     <Compile Include="ValidationHelpers\BirthdayValidation.cs" />
+    <Compile Include="ValidationHelpers\Time1.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\css\style.css" />
@@ -294,12 +399,14 @@
     <Content Include="assets\vendor\bootstrap\js\bootstrap.esm.min.js.map" />
     <Content Include="assets\vendor\bootstrap\js\bootstrap.js.map" />
     <Content Include="assets\vendor\bootstrap\js\bootstrap.min.js.map" />
-    <Content Include="Areas\Doctor\Views\Shared\_DoctorLayout.cshtml" />
-    <Content Include="Areas\Doctor\Views\web.config" />
     <Content Include="Areas\Patient\Views\web.config" />
     <Content Include="Areas\Patient\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Patient\Views\Patient\Index.cshtml" />
     <Content Include="Areas\Patient\Views\Shared\_PatientLayout.cshtml" />
+    <Content Include="Rotativa\help-wkhtmltoimage.txt" />
+    <Content Include="Rotativa\help-wkhtmltopdf.txt" />
+    <Content Include="Rotativa\wkhtmltoimage.exe" />
+    <Content Include="Rotativa\wkhtmltopdf.exe" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -328,8 +435,29 @@
     <Content Include="Content\bootstrap-grid.rtl.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
-    <Content Include="Areas\Admin\Views\User_Doctor_\Add_Doctor.cshtml" />
+    <Content Include="Areas\Admin\Views\User_Doctor\Add_Doctor.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\PatientList.cshtml" />
+    <Content Include="Areas\Doktor\Views\web.config" />
+    <Content Include="Areas\Admin\Views\User_Doctor\DoctorsList.cshtml" />
+    <Content Include="Areas\Doktor\Views\Shared\_DoktorLayout.cshtml" />
+    <Content Include="Areas\Doktor\Views\Doktor\Index.cshtml" />
+    <Content Include="Areas\Patient\Views\Patient\AppointmentList.cshtml" />
+    <Content Include="Areas\Patient\Views\Patient\AddAppointment.cshtml" />
+    <Content Include="Areas\Doktor\Views\Doktor\ApprovedAppointments.cshtml" />
+    <Content Include="Areas\Doktor\Views\Doktor\PendingAppointments.cshtml" />
+    <Content Include="Areas\Doktor\Views\Doktor\AppointmentList.cshtml" />
+    <Content Include="Areas\Doktor\Views\Doktor\EditAppointment.cshtml" />
+    <Content Include="App_Browsers\qt.browser" />
+    <Content Include="Areas\Doktor\Views\Doktor\GetUsers.cshtml" />
+    <Content Include="Areas\Doktor\Views\Doktor\AddMedicine.cshtml" />
+    <Content Include="Areas\Doktor\Views\Doktor\AddPrescription.cshtml" />
+    <Content Include="Areas\Doktor\Views\Doktor\PresriptionList.cshtml" />
+    <Content Include="NLog.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="NLog.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -340,7 +468,9 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\MessageFade.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Views\Home\DepDetails.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -376,15 +506,14 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
-    <Content Include="Views\HomePage\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Areas\Doctor\Controllers\" />
-    <Folder Include="Areas\Doctor\Data\" />
+    <Folder Include="Areas\Doktor\Data\" />
     <Folder Include="Areas\Patient\Data\" />
     <Folder Include="Images\Dep_Images\" />
+    <Folder Include="Images\Doctor_Images\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -397,6 +526,42 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202205031312411__pswup.resx">
       <DependentUpon>202205031312411__pswup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205041834056_user_photo.resx">
+      <DependentUpon>202205041834056_user_photo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205051211565_ap.resx">
+      <DependentUpon>202205051211565_ap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205051337503_appName.resx">
+      <DependentUpon>202205051337503_appName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205051811556_update.resx">
+      <DependentUpon>202205051811556_update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205052042141_stringId.resx">
+      <DependentUpon>202205052042141_stringId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205052211208_apps.resx">
+      <DependentUpon>202205052211208_apps.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205052244100_miayg.resx">
+      <DependentUpon>202205052244100_miayg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205081109599_mig.resx">
+      <DependentUpon>202205081109599_mig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205081618084_prescription.resx">
+      <DependentUpon>202205081618084_prescription.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205081754203_medicine].resx">
+      <DependentUpon>202205081754203_medicine].cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205081800081_med2.resx">
+      <DependentUpon>202205081800081_med2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205091640106_migrationl.resx">
+      <DependentUpon>202205091640106_migrationl.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
@@ -434,8 +599,10 @@
     <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
     <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\Grpc.Core.2.45.0\build\net45\Grpc.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Grpc.Core.2.45.0\build\net45\Grpc.Core.targets'))" />
   </Target>
   <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <Import Project="..\packages\Grpc.Core.2.45.0\build\net45\Grpc.Core.targets" Condition="Exists('..\packages\Grpc.Core.2.45.0\build\net45\Grpc.Core.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

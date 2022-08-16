@@ -1,15 +1,10 @@
 ﻿using Online_Appointment.ValidationHelpers;
 using System;
 using System.ComponentModel.DataAnnotations;
-using System.Web;
 
 namespace Online_Appointment.Models.Requests
 {
-    public enum Status
-    {
-        Manager,
-        Staff
-    }
+
     public class DoctorRegisterRequest
     {
         [Required(ErrorMessage = "First Name is required !")]
@@ -61,10 +56,12 @@ namespace Online_Appointment.Models.Requests
         [Display(Name = "End time")]
         public DateTime EndTime { get; set; }
         public Status Status { get; set; }
-        public string Departament { get; set; }
+        public int Departament { get; set; }
 
-        [Display(Name = "Image")]
-        public string ImageURL { get; set; }
-        public HttpPostedFileBase File { get; set; }
+        [Display(Name = "UserPhoto")]
+        public byte[] UserPhoto { get; set; }
+        //[Display(Name = "Image")]
+        //public string ImageURL { get; set; }
+        //public HttpPostedFileBase File { get; set; }
     }
 }

@@ -1,0 +1,96 @@
+﻿@model IEnumerable<Online_Appointment.Models.Requests.DoctorRegisterRequest>
+
+@{
+    ViewBag.Title = "DoctorsList";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>DoctorsList</h2>
+
+<p>
+    @Html.ActionLink("Add_Doctor", "Add_Doctor")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Firstname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Lastname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Birthday)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Specialization)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EndTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Departament)
+        </th>
+
+    </tr>
+    <tr>
+        @foreach (var item in ViewBag.doctor)
+        {
+
+            <td>
+                @item.ApplicationUser.Firstname
+            </td>
+            <td>
+                @item.ApplicationUser.Lastname
+            </td>
+            <td>
+                @item.ApplicationUser.UserName
+            </td>
+            <td>
+                @item.ApplicationUser.Email
+            </td>
+            <td>
+                @item.ApplicationUser.Birthday
+            </td>
+            <td>
+                @item.ApplicationUser.PhoneNumber
+            </td>
+
+            <td>
+                @item.Specialization
+            </td>
+            <td>
+                @item.StartTime
+            </td>
+            <td>
+                @item.EndTime
+            </td>
+            <td>
+                @item.DepId
+            </td>
+
+            <td>
+                <li>
+                    <img src="@Url.Action("UserPhotos", "Home" )" height="48" width="48" />
+
+                </li>
+            </td>
+
+        }
+        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ })
+        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ })
+        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+    </tr>
+     
+    </table>

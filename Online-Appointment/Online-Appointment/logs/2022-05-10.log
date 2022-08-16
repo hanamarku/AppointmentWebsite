@@ -1,0 +1,76 @@
+2022-05-10 00:26:25.6751 INFO test
+2022-05-10 00:29:08.1720 INFO test
+2022-05-10 00:29:28.1199 INFO test2
+2022-05-10 00:31:48.8696 INFO test
+2022-05-10 00:32:08.8156 INFO test
+2022-05-10 00:33:19.4892 INFO Useri me id30223fe0-9539-4954-b981-9f85a237f5d0 u logua si admin nga IP ::1
+2022-05-10 00:34:14.3467 INFO test
+2022-05-10 00:34:32.5583 INFO test
+2022-05-10 00:34:46.6924 INFO Useri me id30223fe0-9539-4954-b981-9f85a237f5d0 u logua si admin nga IP ::1
+2022-05-10 00:36:33.2651 INFO test
+2022-05-10 00:36:36.9552 INFO test
+2022-05-10 00:36:50.3179 INFO Useri me id30223fe0-9539-4954-b981-9f85a237f5d0 u logua si admin nga IP ::1
+2022-05-10 10:44:17.4651 INFO test
+2022-05-10 10:44:26.0519 INFO test
+2022-05-10 10:45:09.9827 INFO Perdoruesi : hana.marku22@gmail.com dhe ip: ::1 ka dashur te krijoj nje appointment por pa sukses , Gabimi:System.Data.Entity.Infrastructure.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.Entity.Core.UpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: The conversion of a datetime2 data type to a datetime data type resulted in an out-of-range value.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.Entity.Infrastructure.Interception.InternalDispatcher`1.Dispatch[TTarget,TInterceptionContext,TResult](TTarget target, Func`3 operation, TInterceptionContext interceptionContext, Action`3 executing, Action`3 executed)
+   at System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.Reader(DbCommand command, DbCommandInterceptionContext interceptionContext)
+   at System.Data.Entity.Core.Mapping.Update.Internal.DynamicUpdateCommand.Execute(Dictionary`2 identifierValues, List`1 generatedValues)
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.Update()
+   --- End of inner exception stack trace ---
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.Update()
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   at System.Data.Entity.Core.Objects.ObjectContext.SaveChangesToStore(SaveOptions options, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction)
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   at System.Data.Entity.Core.Objects.ObjectContext.SaveChangesInternal(SaveOptions options, Boolean executeInExistingTransaction)
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   --- End of inner exception stack trace ---
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at Online_Appointment.Areas.Patient.Controllers.PatientController.AddAppointment(Appointment model) in C:\Users\DELL\source\repos\PROJEKT.n\Online-Appointment\Online-Appointment\Areas\Patient\Controllers\PatientController.cs:line 66
+2022-05-10 10:46:58.1197 INFO test
+2022-05-10 10:47:23.8832 INFO Perdoruesi :  dhe ip: ::1 ka krijuar nje appointment me id : 2029
+2022-05-10 20:01:16.2124 INFO test
+2022-05-10 20:03:20.3696 INFO test
+2022-05-10 20:19:07.9639 INFO test
+2022-05-10 20:33:27.8478 INFO test
+2022-05-10 20:33:54.8591 INFO Useri : testhhospital@gmail.com ka derguar email tek : hana.marku22@gmail.com
+2022-05-10 20:34:57.0381 INFO test
+2022-05-10 20:35:11.6379 INFO Useri me id30223fe0-9539-4954-b981-9f85a237f5d0 u logua si admin nga IP ::1
+2022-05-10 20:40:27.6327 INFO test
+2022-05-10 20:53:16.5002 INFO test
+2022-05-10 20:54:10.0704 INFO test
+2022-05-10 20:55:46.1448 INFO test
+2022-05-10 20:58:33.4080 INFO test
+2022-05-10 21:03:08.5912 INFO test
+2022-05-10 21:03:28.6296 INFO test
+2022-05-10 21:07:27.1195 INFO test
+2022-05-10 21:08:29.5528 INFO test
+2022-05-10 21:10:35.8046 INFO test
+2022-05-10 21:11:54.5838 INFO test
+2022-05-10 21:16:38.2257 INFO test
+2022-05-10 21:17:04.7188 INFO test
+2022-05-10 21:17:32.4391 INFO test
+2022-05-10 21:19:38.6751 INFO test
+2022-05-10 21:19:52.0285 INFO test
+2022-05-10 21:20:23.2745 INFO test
+2022-05-10 21:21:00.0827 INFO test
+2022-05-10 21:22:05.4494 INFO test
+2022-05-10 21:23:14.5999 INFO test
+2022-05-10 21:23:31.7432 INFO test
+2022-05-10 21:23:56.3755 INFO test
+2022-05-10 21:24:25.5312 INFO test
+2022-05-10 21:34:59.8100 INFO test
+2022-05-10 23:16:22.4108 INFO test
+2022-05-10 23:16:57.1373 INFO Useri me id30223fe0-9539-4954-b981-9f85a237f5d0 u logua si admin nga IP ::1
+2022-05-10 23:55:03.3960 INFO test

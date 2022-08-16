@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Online_Appointment.Models.Appointment>
+
+@{
+    ViewBag.Title = "AppointmentList";
+    Layout = "~/Areas/Patient/Views/Shared/_PatientLayout.cshtml";
+}
+
+<h2>AppointmentList</h2>
+
+@* <p> *@
+@*     @Html.ActionLink("Create New", "Create") *@
+@* </p> *@
+<table class="table">
+    <tr>
+        <th>
+            Patient
+        </th>
+        <th>
+            Doctor
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AppointmentDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.Firstname) @Html.DisplayFor(modelItem => item.User.Lastname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Doctor.ApplicationUser.Firstname) @Html.DisplayFor(modelItem => item.Doctor.ApplicationUser.Lastname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AppointmentDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            @if (item.Status)
+            {
+                <td>
+                    @("Appointment approved !")
+                </td>
+
+            }
+            else
+            {
+                <td>
+                    @("Appointment not approved !")
+                </td>
+
+            }
+        </tr>
+    }
+
+</table>

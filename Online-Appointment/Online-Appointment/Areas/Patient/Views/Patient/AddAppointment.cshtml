@@ -1,0 +1,68 @@
+﻿@model  Online_Appointment.Models.Appointment
+
+@{
+    ViewBag.Title = "AddAppointment";
+    Layout = "~/Areas/Patient/Views/Shared/_PatientLayout.cshtml";
+}
+
+<h2>AddAppointment</h2>
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+@using (Html.BeginForm("AddAppointment", "Patient", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Appointement</h4>
+        <hr />
+
+        <div class="form-group">
+            Select Doctor
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.DoctorId, new SelectList(ViewBag.users, "Id", "UserName"))
+                @Html.ValidationMessageFor(model => model.DoctorId, "", new { @class = "text-danger" })
+            </div>
+
+        </div>
+
+
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.AppointmentDate, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.AppointmentDate,  new { htmlAttributes = new { @class = "form-control", type = "date" } })
+            @Html.ValidationMessageFor(model => model.AppointmentDate, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Time, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Time, new { htmlAttributes = new { @class = "form-control", type = "time" } })
+            @Html.ValidationMessageFor(model => model.Time, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

@@ -1,0 +1,88 @@
+﻿@model IEnumerable<Online_Appointment.Models.Appointment>
+
+@{
+    ViewBag.Title = "AppointmentList";
+    Layout = "~/Areas/Patient/Views/Shared/_PatientLayout.cshtml";
+}
+@Scripts.Render("~/bundles/bootstrap")
+@Scripts.Render("~/bundles/jQuery")
+
+
+<h2>AppointmentList</h2>
+
+@if (TempData["AlertMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" id="alert" role="alert">
+        <strong>Success !</strong> @TempData["AlertMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+        </button>
+    </div>
+}
+
+<p>
+    <button type="button" class="btn btn-success">@Html.ActionLink("Add Appointment", "AddAppointment", null, new { style = "color: black;" })</button> 
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Patient
+        </th>
+        <th>
+            Doctor
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AppointmentDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Time)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.Firstname) @Html.DisplayFor(modelItem => item.User.Lastname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Doctor.ApplicationUser.Firstname) @Html.DisplayFor(modelItem => item.Doctor.ApplicationUser.Lastname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AppointmentDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Time)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            @if (item.Status)
+            {
+                <td>
+                    @("Approved !")
+                </td>
+
+            }
+            else
+            {
+                <td>
+                    @ViewBag.Status
+                </td>
+
+            }
+            <td>
+                <button type="button" class="btn btn-danger">@Html.ActionLink("Delete", "DeleteAppointment", new { id = item.Id }, new { style = "color: black;" })</button>
+            </td>
+        </tr>
+    }
+
+</table>
+
+<script src="~/Scripts/MessageFade.js"></script>

@@ -23,6 +23,12 @@ namespace Online_Appointment
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/dataTables").Include(
+                       "~/Scripts/DataTables/jquery.dataTables.js"));
+
+            bundles.Add(new StyleBundle("~/Content/dataTables").Include(
+                               "~/Content/DataTables/css/jquery.dataTables.css"));
         }
     }
 }

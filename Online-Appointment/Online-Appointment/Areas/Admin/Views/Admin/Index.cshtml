@@ -8,71 +8,67 @@
 
 <section class="section dashboard">
 
-    <div class="row ">
+    <div class="row "/>
+    <div class="col-lg-3">
+
+    </div>
+    <div class="col-lg-6">
+        <div class="row"/>
+        <div class="col-xxl-12 col-md-12">
+            <div class="card info-card sales-card">
+                <div class="card-body ">
+                    <h5 class="card-title">Departments
+                        <span></span>
+                    </h5>
+                    <div class="d-flex align-items-center">
+                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                            <i class="bi bi-building"></i>
+                        </div>
+                        <div class="ps-3">
+                            <h6>@ViewBag.Deps</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xxl-12 col-md-12">
+            <div class="card info-card sales-card">
+                <div class="card-body">
+                    <h5 class="card-title">Doctors
+                        <span></span>
+                    </h5>
+                    <div class="d-flex align-items-center">
+                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                            <i class="fa fa-user-md"></i>
+                        </div>
+                        <div class="ps-3">
+                            @ViewBag.Patients
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xxl-12 col-md-12">
+            <div class="card info-card sales-card">
+                <div class="card-body">
+                    <h5 class="card-title">Patients
+                        <span></span>
+                    </h5>
+                    <div class="d-flex align-items-center">
+                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                            <i class="bi bi-person-video2"></i>
+                        </div>
+                        <div class="ps-3">
+                            @ViewBag.Doctor
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="col-lg-3">
 
         </div>
-        <div class="col-lg-6">
-            <div class="row">
-
-                <div class="col-xxl-12 col-md-12">
-                    <div class="card info-card sales-card">
-                        <div class="card-body ">
-                            <h5 class="card-title">Departments<span></span></h5>
-                            <div class="d-flex align-items-center">
-                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                    <i class="bi bi-building"></i>
-                                </div>
-
-                                <div class="ps-3">
-                                    <h6>@Model.Departments.Count()</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="col-xxl-12 col-md-12">
-                    <div class="card info-card sales-card">
-                        <div class="card-body">
-                            <h5 class="card-title">Doctors<span></span></h5>
-
-                            <div class="d-flex align-items-center">
-                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                    <i class="fa fa-user-md"></i>
-                                </div>
-
-                                <div class="ps-3">
-                                    <h6>Number of doctors</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="col-xxl-12 col-md-12">
-                    <div class="card info-card sales-card">
-                        <div class="card-body">
-                            <h5 class="card-title">Patients<span></span></h5>
-
-                            <div class="d-flex align-items-center">
-                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                    <i class="bi bi-person-video2"></i>
-                                </div>
-
-                                <div class="ps-3">
-                                    <h6> number of patients</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3">
-
-                </div>
+    </div>
 </section>
 
 

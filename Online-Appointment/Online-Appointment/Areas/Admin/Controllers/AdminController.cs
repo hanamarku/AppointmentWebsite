@@ -1,5 +1,4 @@
-﻿using Online_Appointment.CollectionOfModels;
-using Online_Appointment.Models;
+﻿using Online_Appointment.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -10,23 +9,42 @@ using System.Web.Mvc;
 
 namespace Online_Appointment.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
+
+        //private ILogger _logger;
+        //public AdminController(ILogger logger)
+        //{
+        //    _logger = logger;
+        //}
         // GET: Admin/Admin
         public ApplicationDbContext DbContext = new ApplicationDbContext();
-        //public AdminController()
-        //{
-        //    DbContext = new Models.HmsDbContext();
-        //}
+        private readonly ApplicationDbContext _context;
+
+        public AdminController(ApplicationDbContext context)
+        {
+            DbContext = context;
+        }
+
+        private ApplicationUserManager _userManager;
+
 
         public ActionResult Index()
         {
-            var model = new DashboardCollection
-            {
-                Departments = DbContext.Departments.ToList()
+            ViewBag.Deps = DbContext.Departments.ToList().Count;
+            // ViewBag.Patients = Roles.GetUsersInRole("Patient").ToList();
+            //ViewBag.Doctor = _userManager.GetUsersInRole
+            //int totalUser=DbContext.AspNetUsers.Where(u => u.AspNetRoles.Any(r => r.Name == "Patient")).Count()
 
-            };
-            return View(model);
+            //var model = new DashboardCollection
+            //{
+            //    Departments = DbContext.Departments.ToList()
+
+            //};
+
+
+            return View();
         }
 
         //Medicine
@@ -44,6 +62,7 @@ namespace Online_Appointment.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
 
         public ActionResult AddMedicine(Medicine model)
         {
@@ -57,6 +76,7 @@ namespace Online_Appointment.Areas.Admin.Controllers
                 med.TimeToTakeMedicine = model.TimeToTakeMedicine;
                 DbContext.Medicines.Add(med);
                 DbContext.SaveChanges();
+                //LoggerService.GetInstance().Info("Useri me id");
             }
             return RedirectToAction("MedicineList");
             ModelState.Clear();
@@ -74,6 +94,7 @@ namespace Online_Appointment.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
 
         public ActionResult EditMedicine(int id, Medicine model)
         {
@@ -276,6 +297,8 @@ namespace Online_Appointment.Areas.Admin.Controllers
             }
             return Json(flag, JsonRequestBehavior.AllowGet);
         }
+
+
 
         //[HttpGet]
 

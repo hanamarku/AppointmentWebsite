@@ -29,7 +29,11 @@ namespace Online_Appointment.Models
     //public virtual List<Appointement> Appointements { get; set; }
 
     //}
-
+    public enum Status
+    {
+        Manager,
+        Staff
+    }
 
     public class Doctor
     {
@@ -38,15 +42,20 @@ namespace Online_Appointment.Models
         [ForeignKey("Id")]
         public virtual ApplicationUser ApplicationUser { get; set; }
         public string Specialization { get; set; }
+        [DataType(DataType.Time)]
         public DateTime StartTime { get; set; }
+        [DataType(DataType.Time)]
         public DateTime EndTime { get; set; }
-        public int Status { get; set; }
-        public string ImageURL { get; set; }
+        public Status Status { get; set; }
+        //public string ImageURL { get; set; }
+        //[NotMapped]
+        //public HttpPostedFileBase File { get; set; }
+        public byte[] UserPhoto { get; set; }
         public int DepId { get; set; }
         [ForeignKey("DepId")]
         public virtual Department Departament { get; set; }
         public virtual List<Prescription> Prescriptions { get; set; }
 
     }
-    //}
+
 }

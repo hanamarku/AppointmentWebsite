@@ -56,10 +56,28 @@ namespace Online_Appointment.Models
         //public string Email { get; set; }
 
         [Required]
-        [Display(Name = "Username")]
-        //[EmailAddress]
-        public string UserName { get; set; }
+        public string Email { get; set; }
+        public bool UserGaveEmail
+        {
+            get
+            {
+                var trimmedEmail = Email.Trim();
 
+                if (trimmedEmail.EndsWith("."))
+                {
+                    return false; // suggested by @TK-421
+                }
+                try
+                {
+                    var addr = new System.Net.Mail.MailAddress(Email);
+                    return addr.Address == trimmedEmail;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+        }
 
         [Required]
         [DataType(DataType.Password)]

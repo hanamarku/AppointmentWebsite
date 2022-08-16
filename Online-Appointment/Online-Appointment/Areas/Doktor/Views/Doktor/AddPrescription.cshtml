@@ -1,0 +1,38 @@
+﻿@model Online_Appointment.Models.Prescription
+
+@{
+    ViewBag.Title = "AddPrescription";
+    Layout = "~/Areas/Doktor/Views/Shared/_DoktorLayout.cshtml";
+}
+
+<h2>AddPrescription</h2>
+
+@using (Html.BeginForm("AddPrescription", "Doktor", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <p> Patient name :</p> @ViewBag.userPatient  <br />
+    @ViewBag.userDoctor  <br />
+
+    @ViewBag.appDate
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Description, new { @class = " control-label" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(m => m.Description, 15, 50, new { @class = "form-control", style = "width: 100%; max-width: 100%;" })
+            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

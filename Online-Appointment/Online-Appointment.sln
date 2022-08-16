@@ -5,6 +5,8 @@ VisualStudioVersion = 17.1.32421.90
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Online_Appointment", "Online-Appointment\Online_Appointment.csproj", "{588BB968-351B-4BA3-BB96-E9FD1C5AEFAB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Online_Appointment.Business", "Online_Appointment.Business\Online_Appointment.Business.csproj", "{DB934059-F202-42CA-95D2-586135D4AA79}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{588BB968-351B-4BA3-BB96-E9FD1C5AEFAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{588BB968-351B-4BA3-BB96-E9FD1C5AEFAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{588BB968-351B-4BA3-BB96-E9FD1C5AEFAB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB934059-F202-42CA-95D2-586135D4AA79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB934059-F202-42CA-95D2-586135D4AA79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB934059-F202-42CA-95D2-586135D4AA79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB934059-F202-42CA-95D2-586135D4AA79}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

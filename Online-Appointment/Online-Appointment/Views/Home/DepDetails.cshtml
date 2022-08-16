@@ -1,0 +1,61 @@
+﻿@using Online_Appointment.Models
+@model Online_Appointment.Models.Department
+
+@{
+    ViewData["Title"] = "Department details";
+}
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-md-8 offset-2">
+        <div class="card mb-12">
+            <div class="row g-0">
+                <div class="col-md-12">
+                    <div class="card-header text-white bg-info">
+                        <p class="card-text">
+                            <h5 class="card-title">
+                                @Model.Name
+                            </h5>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <img src="@Url.Content(@Model.ImageURL)" width="100%" alt="@Model.Name">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <p class="card-text">@Model.Name</p>
+                        <hr/>
+                        <p class="card-text">@Model.Description</p>
+                        
+                        <p class="card-text">
+                            <b>Doctors of this department : </b>
+                            <hr />
+                            <div class="row">
+                                @foreach (var doctor in Model.Doctors)
+                                {
+                                    <div class="column text-center">
+                                        <a >
+                                            @* @doctor.ApplicationUser.Firstname *@
+                                            @doctor.Departament.Name
+                                            @doctor.Id
+                                          
+                                            @* @doctor.ApplicationUser.Firstname @doctor.ApplicationUser.Lastname<br/> *@
+                                            @doctor.Specialization
+                                        
+                                        </a>
+                                        <br/>
+                                    </div>
+                                }
+                            </div>
+                        </p>
+
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+    </div>
+</div>

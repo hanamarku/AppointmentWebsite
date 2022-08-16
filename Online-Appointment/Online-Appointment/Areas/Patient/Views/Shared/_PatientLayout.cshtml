@@ -1,4 +1,4 @@
-﻿
+﻿@using Microsoft.AspNet.Identity
 <!DOCTYPE html>
 
 <head>
@@ -25,7 +25,7 @@
         <header id="header" class="header fixed-top d-flex align-items-center">
 
             <div class="d-flex align-items-center justify-content-between">
-                <a href="@Url.Action("Index", "Patient")" class="logo d-flex align-items-center">
+                <a href="@Url.Action("Index", "Home" , new {area = ""})" class="logo d-flex align-items-center">
                     <span class="d-none d-lg-block">Heal & Health</span>
                 </a>
                 <i class="bi bi-list toggle-sidebar-btn"></i>
@@ -53,42 +53,31 @@
                     <li class="nav-item dropdown pe-3">
 
                         <a class="nav-link nav-profile d-flex align-items-center pe-0" style="text-decoration-line: none;" href="#" data-bs-toggle="dropdown">
-                            <span class="d-none d-md-block dropdown-toggle ps-2"></span>
+                            <span class="d-none d-md-block dropdown-toggle ps-2"> @User.Identity.GetUserName()</span>
                         </a>
 
                         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                             <li class="dropdown-header">
-                                <h6></h6>
+                                @if (Request.IsAuthenticated)
+                                {
+                                    using (Html.BeginForm("LogOff", "Account", new { area = "" }, FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                                    {
+                                        @Html.AntiForgeryToken()
+
+                                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                            <li class="nav-item">
+                                                @Html.ActionLink(User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                                            </li>
+                                            <li class="nav-item"><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+                                        </ul>
+                                    }
+                                }
                                 <span></span>
                             </li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
+                            
 
-                            <li>
-                                <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                                    <i class="bi bi-person"></i>
-                                    <span>Profile</span>
-                                </a>
-                            </li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li>
-                                <a class="dropdown-item d-flex align-items-center" href="../logout.php">
-                                    <i class="bi bi-box-arrow-right"></i>
-                                    <span>Sign Out</span>
-                                </a>
-                            </li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li>
-                                <a class="dropdown-item d-flex align-items-center" href="../../ndrysho_fjalekalim.php">
-                                    <i class="fa fa-key" aria-hidden="true"></i>
-                                    <span>Change Password</span>
-                                </a>
-                            </li>
+                         
+                        
                         </ul>
                     </li>
                 </ul>
@@ -108,33 +97,8 @@
                     </a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-                        <i class="bi bi-building"></i><span>Departments</span><i class="bi bi-chevron-down ms-auto"></i>
-                    </a>
-                    <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                        <li>
-                            <a href="@Url.Action("DepartmentsList", "Patient")" class="elements">
-                                <i class="bi bi-circle"></i><span>Departments</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
 
-          
 
-                <li class="nav-item">
-                    <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
-                        <i class="fa fa-user-md"></i><span>Doctors</span><i class="bi bi-chevron-down ms-auto"></i>
-                    </a>
-                    <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                        <li>
-                            <a href="doktorArea/index.php">
-                                <i class="bi bi-circle"></i><span>Doctors</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
 
                 <li class="nav-item">
                     <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
@@ -142,15 +106,15 @@
                     </a>
                     <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                         <li>
-                            <a href="#">
-                                <i class="bi bi-circle"></i><span>Test</span>
+                            <a href="@Url.Action("AppointmentList", "Patient")">
+                                <i class="bi bi-circle"></i><span>Add Appointment</span>
                             </a>
                         </li>
 
                     </ul>
                 </li>
 
-                
+
             </ul>
 
         </aside>
@@ -180,6 +144,3 @@
         @RenderSection("scripts", required: false)
 
     </body>
-    </html>
-
-

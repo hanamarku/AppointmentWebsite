@@ -5,7 +5,7 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>DepartmentsList</h2>
+<h2>List of Departments</h2>
 
 <p>
     <button type="button" class="btn btn-primary">@Html.ActionLink("Add Department", "AddDepartment", null, new { style = "color: white" })</button>
@@ -55,6 +55,6 @@
     }
 
 </table>
-<script src="~/Scripts/alertMessageJavaScript.js"></script>
+<script src="~/Scripts/MessageFade.js"></script>
 @Scripts.Render("~/bundles/bootstrap")
 @Scripts.Render("~/bundles/jQuery")

@@ -1,0 +1,12 @@
+C:\Users\DELL\source\repos\PROJEKT.n\Online-Appointment\Online_Appointment.Business\bin\Debug\net6.0\Online_Appointment.Business.deps.json
+C:\Users\DELL\source\repos\PROJEKT.n\Online-Appointment\Online_Appointment.Business\bin\Debug\net6.0\Online_Appointment.Business.dll
+C:\Users\DELL\source\repos\PROJEKT.n\Online-Appointment\Online_Appointment.Business\bin\Debug\net6.0\Online_Appointment.Business.pdb
+C:\Users\DELL\source\repos\PROJEKT.n\Online-Appointment\Online_Appointment.Business\obj\Debug\net6.0\Online_Appointment.Business.csproj.AssemblyReference.cache
+C:\Users\DELL\source\repos\PROJEKT.n\Online-Appointment\Online_Appointment.Business\obj\Debug\net6.0\Online_Appointment.Business.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\DELL\source\repos\PROJEKT.n\Online-Appointment\Online_Appointment.Business\obj\Debug\net6.0\Online_Appointment.Business.AssemblyInfoInputs.cache
+C:\Users\DELL\source\repos\PROJEKT.n\Online-Appointment\Online_Appointment.Business\obj\Debug\net6.0\Online_Appointment.Business.AssemblyInfo.cs
+C:\Users\DELL\source\repos\PROJEKT.n\Online-Appointment\Online_Appointment.Business\obj\Debug\net6.0\Online_Appointment.Business.csproj.CoreCompileInputs.cache
+C:\Users\DELL\source\repos\PROJEKT.n\Online-Appointment\Online_Appointment.Business\obj\Debug\net6.0\Online_Appointment.Business.dll
+C:\Users\DELL\source\repos\PROJEKT.n\Online-Appointment\Online_Appointment.Business\obj\Debug\net6.0\refint\Online_Appointment.Business.dll
+C:\Users\DELL\source\repos\PROJEKT.n\Online-Appointment\Online_Appointment.Business\obj\Debug\net6.0\Online_Appointment.Business.pdb
+C:\Users\DELL\source\repos\PROJEKT.n\Online-Appointment\Online_Appointment.Business\obj\Debug\net6.0\ref\Online_Appointment.Business.dll

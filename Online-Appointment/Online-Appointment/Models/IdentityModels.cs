@@ -20,7 +20,7 @@ namespace Online_Appointment.Models
         //[DataType(DataType.Date)]
         public DateTime Birthday { get; set; }
         public DateTime CreatedOn { get; set; }
-        public virtual List<Appointement> Appointements { get; set; }
+        public virtual List<Appointment> Appointments { get; set; }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // note the authenticationtype must match the one defined in cookieauthenticationoptions.authenticationtype
@@ -37,11 +37,16 @@ namespace Online_Appointment.Models
     }
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public DbSet<Appointement> Appointements { get; set; }
+        public DbSet<Appointment> Appointments { get; set; }
         public DbSet<Department> Departments { get; set; }
         public DbSet<Medicine> Medicines { get; set; }
         public DbSet<Prescription> Prescriptions { get; set; }
         public DbSet<Doctor> Doctors { get; set; }
+        public override IDbSet<ApplicationUser> Users { get; set; }
+        public override IDbSet<IdentityRole> Roles { get; set; }
+        
+        
+
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
